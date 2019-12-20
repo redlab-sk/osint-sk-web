@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <title>OSINT.sk</title>
+
+    <link rel="canonical" href="https://osint.sk/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/osint.css" rel="stylesheet">
+  </head>
+
+  <body>
+  <!--
+ .d88888b.   .d8888b. 8888888 888b    888 88888888888          888      
+d88P" "Y88b d88P  Y88b  888   8888b   888     888              888      
+888     888 Y88b.       888   88888b  888     888              888      
+888     888  "Y888b.    888   888Y88b 888     888     .d8888b  888  888 
+888     888     "Y88b.  888   888 Y88b888     888     88K      888 .88P 
+888     888       "888  888   888  Y88888     888     "Y8888b. 888888K  
+Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b 
+ "Y88888P"   "Y8888P" 8888888 888    Y888     888  Y8P 88888P' 888  888 
+                                                                            
+  -->
+
+    <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="https://osint.sk">
+          <img src="img/logo.png" width="30px">
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="#db">databázy</a>
+        <a class="py-2 d-none d-md-inline-block" href="#ports">porty</a>
+        <a class="py-2 d-none d-md-inline-block" href="#cve">CVE</a>
+        <a class="py-2 d-none d-md-inline-block" href="#bluekeep">bluekeep</a>
+        <a class="py-2 d-none d-md-inline-block" href="#ics">ICS</a>
+        <a class="py-2 d-none d-md-inline-block" href="#ssl">SSL</a>
+        <a class="py-2 d-none d-md-inline-block" href="#project">O Projekte</a>
+      </div>
+    </nav>
+
+    <!-- Headline -->
+    <section class="headline">
+      <div class="position-relative overflow-hidden p-3 text-center container-fluid">
+          <div id="particles-js"></div>
+        <div class="col-md-5 p-lg-5 mx-auto my-5" id="osint-title">
+          <h1 class="display-4 font-weight-normal osint">Open-source intelligence (OSINT) .SK</h1>
+          <p class="lead font-weight-normal">Všetky aktuálne údaje o slovenskom internete ktoré môžete potrebovať, na jednom mieste.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+    <!-- carousel -->
+    <section class="carousel">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-caption">
+                <h3>Približne <span class="badge-carousel" id="carousel-MySQL">0</span> MySQL databáz je dostupných z internetu.</h3>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-caption">
+                  <h3>Dostupných je <span class="badge-carousel" id="carousel-http">0</span> webserverov, a iba <span class="badge-carousel" id="carousel-https">0</span> používa HTTPS.</h3>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-caption">
+                  <h3>Z webserverov používajúcich HTTPS má <span class="badge-carousel" id="carousel-cert_expired">0</span> expirovaný ceritifikát.</h3>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-caption">
+                  <h3>Dostupný systém pre automatizáciu a správu budov (Tridium/Niagara ) má <span class="badge-carousel" id="carousel-Niagara">0</span> zariadení.</h3>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-caption">
+                  <h3>Približne <span class="badge-carousel" id="carousel-EtherNet-IP">0</span> PLC v továrňach je dostupných z internetu.</h3>
+              </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                    <h3>Približne <span class="badge-carousel" id="carousel-cve-2017-9798">0</span> Apache webserverov môže byť ešte stále zraniteľných na CVE-2017-9798 (Optionsbleed).</h3>
+                </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="carousel-caption">
+                      <h3>Je dostupných približne <span class="badge-carousel" id="carousel-23">0</span> telnet služieb a <span class="badge-carousel" id="carousel-21">0</span> ftp služieb.</h3>
+                  </div>
+                </div>
+      
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section>
+
+
+      <hr />    
+<!-- databazy BEGIN -->
+<section id="db">
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h1 class="section-heading text-uppercase">Databázy</h1>
+            <h3 class="section-subheading text-muted">Týždenné štatistiky o databázových službách prevádzkovaných na slovenských IP adresách.</h3>
+          </div>
+        </div>
+  
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+        <canvas id="dbChart" width="600px" height="100px"></canvas>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad databázových služieb prevádzkovaných na slovenských IP adresách. Je aktualizovaná týždenne na základe aktuálnych dát zo služby <a class="text-muted" href="https://www.shodan.io/explore/category/databases" target="_blank">Shodan</a>. Zdrojové dáta su aktualizované priebežne na základe výsledkov aktívneho skenu siete. Priemerná doba aktualizácie dát pre danú službu na konkrétnej IP adrese (re-scan) je aktuálne 1 mesiac.</h3>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <h4 class="stats-heading">SQL</h4>
+          <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=product%3AMySQL+country%3A%22SK%22" class="text-muted" target="_blank">MySQL</a><span class="badge badge-primary badge-pill" id="MySQL">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=port%3A5432+PostgreSQL+country%3A%22SK%22" class="text-muted" target="_blank">PostgreSQL</a><span class="badge badge-primary badge-pill" id="PostgreSQL">0</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+            <h4 class="stats-heading">NoSQL</h4>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=product%3AMongoDB+country%3A%22SK%22" class="text-muted" target="_blank"></a>MongoDB<span class="badge badge-primary badge-pill" id="MongoDB">0</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=port%3A8087+Riak+country%3A%22SK%22" class="text-muted" target="_blank"></a>Riak<span class="badge badge-primary badge-pill" id="Riak">0</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=port%3A9200+json+country%3A%22SK%22" class="text-muted" target="_blank"></a>Elastic<span class="badge badge-primary badge-pill" id="Elastic">0</span></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+              <h4 class="stats-heading">Iné</h4>
+              <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=product%3AMemcached+country%3A%22SK%22" class="text-muted" target="_blank"></a>Memcached<span class="badge badge-primary badge-pill" id="Memcached">0</span></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=product%3ARedis+country%3A%22SK%22" class="text-muted" target="_blank"></a>Redis<span class="badge badge-primary badge-pill" id="Redis">0</span></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=product%3ACouchDB+country%3A%22SK%22" class="text-muted" target="_blank"></a>CouchDB<span class="badge badge-primary badge-pill" id="CouchDB">0</span></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><a href="https://www.shodan.io/search?query=product%3ACassandra+country%3A%22SK%22" class="text-muted" target="_blank"></a>Cassandra<span class="badge badge-primary badge-pill" id="Cassandra">0</span></li>
+              </ul>
+          </div>
+       
+      </div>
+
+
+    <div class="container mt-5 mb-5">
+        <a href="#db-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+    </div>
+
+    <div class="container mt-5 mb-5 panel-collapse collapse" id="db-dataset-show">
+      <div class="row text-center">
+
+        <div class="col-md-6">
+          <h3 class="stats-heading">stats-db</h3>
+          <p class="text-muted">Denná štatistika dostupných datbázových služieb.</p>
+          <pre class="text-left">
+        {
+          "PostgreSQL": 650, 
+          "Elastic": 13, 
+          "MongoDB": 18, 
+          "CouchDB": 0, 
+          "Redis": 3, 
+          "MySQL": 2775, 
+          "Riak": 0, 
+          "Memcached": 14, 
+          "Cassandra": 0
+        }
+            </pre>
+        </div>
+
+        <div class="col-md-6">
+            <h4 class="stats-heading">trends-db</h4>
+            <p class="text-muted">Celkový trend dostupnosti databázových služieb.</p>
+            <pre class="text-left">
+        {
+          "db": [
+              {
+                  "date": "2019-12-01",         
+                  "PostgreSQL": 658, 
+                  "Elastic": 12, 
+                  "MongoDB": 19, 
+                  "CouchDB": 0, 
+                  "Redis": 3, 
+                  "MySQL": 2797, 
+                  "Riak": 0, 
+                  "Memcached": 16, 
+                  "Cassandra": 0
+              }, 
+            ]
+        }
+              </pre>
+          </div>
+  
+      </div>
+      <div class="row text-center">
+          <div class="col-md-6">
+              <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-db.json" class="btn btn-outline-danger col-md-12"  target="_blank">Stiahnuť</a>
+          </div>
+          <div class="col-md-6">
+              <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-db.json" class="btn btn-outline-danger col-md-12"  target="_blank">Stiahnuť</a>
+          </div>
+      </div>
+    </div>
+
+
+
+  </section>
+<!-- databazy END -->
+
+<hr />
+    
+<!-- porty BEGIN -->
+<section id="ports">
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="section-heading text-uppercase">Porty</h1>
+        <h3 class="section-subheading text-muted">Týždenné štatistiky o sieťových portoch dostupných na slovenských IP adresách.</h3>
+      </div>
+    </div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+    <canvas id="portsChart" width="600px" height="100px"></canvas>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad sieťových portoch dostupných na slovenských IP adresách. Je aktualizovaná týždenne na základe aktuálnych dát zo služby Shodan. Zdrojové dáta su aktualizované priebežne na základe výsledkov aktívneho skenu siete. Priemerná doba aktualizácie dát pre danú službu na konkrétnej IP adrese (re-scan) je aktuálne 1 mesiac.</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h4 class="stats-heading">Web</h4>
+      <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">80<span class="badge badge-primary badge-pill" id="80">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">443<span class="badge badge-primary badge-pill" id="443">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">8080 <span class="badge badge-primary badge-pill" id="8080">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">8443 <span class="badge badge-primary badge-pill" id="8443">0</span></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+        <h4 class="stats-heading">Privilegované porty</h4>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">123 <span class="badge badge-primary badge-pill" id="123">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">143 <span class="badge badge-primary badge-pill" id="143">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">21<span class="badge badge-primary badge-pill" id="21">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">22<span class="badge badge-primary badge-pill" id="22">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">23<span class="badge badge-primary badge-pill" id="23">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">25<span class="badge badge-primary badge-pill" id="25">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">53<span class="badge badge-primary badge-pill" id="53">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">554 <span class="badge badge-primary badge-pill" id="554">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">993 <span class="badge badge-primary badge-pill" id="993">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">995 <span class="badge badge-primary badge-pill" id="995">-</span></li>
+
+        </ul>
+      </div>
+      <div class="col-md-4">
+          <h4 class="stats-heading">Privilegované porty</h4>
+          <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">1723 <span class="badge badge-primary badge-pill" id="1723">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">2000 <span class="badge badge-primary badge-pill" id="2000">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">3389 <span class="badge badge-primary badge-pill" id="3389">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">5060 <span class="badge badge-primary badge-pill" id="5060">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">5061 <span class="badge badge-primary badge-pill" id="5061">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">7547 <span class="badge badge-primary badge-pill" id="7547">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">8291 <span class="badge badge-primary badge-pill" id="8291">-</span></li>
+          </ul>
+      </div>
+   
+  </div>
+
+
+<div class="container mt-5 mb-5">
+    <a href="#ports-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+</div>
+
+<div class="container mt-5 mb-5 panel-collapse collapse" id="ports-dataset-show">
+  <div class="row text-center">
+
+    <div class="col-md-6">
+      <h3 class="stats-heading">stats-ports</h3>
+      <p class="text-muted">Denná štatistika dostupných datbázových služieb.</p>
+      <pre class="text-left">
+      {
+        "2000": 14115, 
+        "8080": 12668, 
+        "443": 33320, 
+        "5060": 5659, 
+        "1723": 13210, 
+        "993": 4977, 
+        "554": 10286, 
+        "23": 3986, 
+        "143": 3357, 
+        "7547": 7029, 
+        "80": 53116, 
+        "995": 2928, 
+        "53": 13035, 
+        "22": 16672, 
+        "8443": 4110, 
+        "25": 8434, 
+        "5061": 8425, 
+        "123": 25605, 
+        "3389": 5240, 
+        "21": 8444
+    }
+        </pre>
+    </div>
+
+    <div class="col-md-6">
+        <h4 class="stats-heading">trends-ports</h4>
+        <p class="text-muted">Celkový trend dostupnosti databázových služieb.</p>
+        <pre class="text-left">
+        {
+          "ports": [
+              {
+                  "995": 2966, 
+                  "25": 8456, 
+                  "8080": 12610, 
+                  "5060": 5815, 
+                  "993": 4978, 
+                  "23": 3359, 
+                  "443": 33627, 
+                  "554": 10270, 
+                  "22": 16758, 
+                  "1723": 13551, 
+                  "53": 12992, 
+                  "3389": 5544, 
+                  "2000": 14177, 
+                  "123": 25644, 
+                  "21": 8536, 
+                  "8443": 4098, 
+                  "date": "2019-12-01", 
+                  "5061": 8727, 
+                  "80": 51839, 
+                  "7547": 6997, 
+                  "143": 3578
+              },
+          ]
+        } 
+          </pre>
+      </div>
+
+  </div>
+  <div class="row text-center">
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ports.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+      </div>
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-ports.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+      </div>
+  </div>
+</div>
+
+
+
+</section>
+<!-- porty END -->
+
+<hr />
+
+<!-- projekt BEGIN -->
+<section id="project">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">O Projekte</h2>
+          <h3 class="section-subheading text-muted">O čo tu vlastne ide a načo je to všetko dobré.</h3>
+        </div>
+      </div>
+      <div class="row text-block">
+        <div class="col-md-12">
+          <p class="text-muted">Cieľom projektu je agregovať a kombinovať informácie zozbierané z viacerých verejne dostupných zdrojov za účelom vytvorenia komplexného prehľadu o "<i>slovenskom internete</i>". Hoci väčšina z týchto dát je, ako názov napovedá, verejne dostupna, je vhodnejšie mať ich na jednom mieste. Vrátane ich histórie, ktorá je nie vždy dostupná. Iné dáta (pridané neskôr) predstavujú zase podmnožiny (slovensko) celosvetových množín dát (datasetov) ktoré kvôli svojmu rozsahu vyžadujú značný čas a zdroje na spracovanie. Ďalšie dáta sú zase odvádzané od dostupných dát (štatistiky a metadáta).</p>
+          <p class="text-muted">Pre venujúcicj sa informačnej bezpečnosti, alebo IT všeobecne, tieto dáta ani spôsob ich získavania pravdepodobne nepredstavujú nič prekvapive. Dúfam však že im ich spracovanie a zverejnenie na jednom mieste ušetrí čas a námahu ak ich budú potrebovať.</p>
+          <p class="text-muted">Pre vás ostatných ktorým nejde o dáta samotné, dúfam že ich vhodná reprezentácia tu vám poskytne odpovde na čo najviac otázok o "slovenskej" časti internetu, ako napríklad</p>
+            <ul class="text-small">
+                <li>Čo to vlastne ten "slovenský" internet je?</li>
+                <li>Koľko tu je čoho?</li>
+                <li>Kto to má a kde?</li>
+                <li>Ako sme na tom s bezpečnosťou?</li>
+            </ul>
+            <p class="text-muted">Tajne taktiež dúfam že jednoduchšie sprístupnenie týchto dát a prehľadnejšia forma pomôže napraviť niektoré nešťastné rozhodnutia, či už je ich príčinou lenivosť alebo skreslená predstava že "to na internete nikto nenájde". Napríklad tieto:</p>
+            <ul class="text-small">
+                <li>Dostupné databázové služby</li>
+                <li>Žiadne alebo neplatne SSL certifikáty pre webové služby</li>
+                <li>Služby so známymi zraniteľnosťami</li>
+                <li>Dostupné ICS zariadenia a SCADA</li>
+            </ul>
+          <p class="text-muted">Hoci som všetky dáta najradšej pridal naraz a hneď, bráni mi v tom nedostatok voľného času a lenivosť. Budú preto pridávané postupne a vo viacerých fázach. Na začiatok sa mi zdalo vhodné použiť dáta zo služby Shodan. Nasledovať budú pravdepodobne generované podmnožiny dát zo scans.io projektov. Na nespracované zdroje dát sa budem snažiť aspoň pridať odkazy. 
+          </p>
+         
+          
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+<!-- projekt END -->
+
+
+<!-- footer -->
+  <section id="footer">
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <a class="py-2" href="https://redlab.sk">
+            <img src="img/logo.png" style="width: 20%; height: 20%">
+          </a>
+          <small class="d-block mb-3 text-muted">Red Lab</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Obsah</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#db">databázy</a></li>
+            <li><a class="text-muted" href="#ports">porty</a></li>
+            <li><a class="text-muted" href="#cve">CVE</a></li>
+            <li><a class="text-muted" href="#bluekeep">bluekeep</a></li>
+            <li><a class="text-muted" href="#ics">ICS</a></li>
+            <li><a class="text-muted" href="#ssl">SSL</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Zdroje</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://www.shodan.io/">Shodan</a></li>
+            <li><a class="text-muted" href="https://opendata.rapid7.com/">Project Sonar</a></li>
+            <li><a class="text-muted" href="https://censys.io/">Censys</a></li>
+            <li><a class="text-muted" href="https://sk-nic.sk/">SK-NIC</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Odkazy</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://scans.io/">scans.io</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>O Nás</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#project">O Projekte</a></li>
+            <li><a class="text-muted" href="https://twitter.com/redlab_sk" target="_blank">Twitter</a></li>
+            <li><a class="text-muted" href="https://github.com/redlab-sk" target="_blank">Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/holder.min.js"></script>
+    <script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <script src="https://npmcdn.com/Chart.Zoom.js@0.3.0/Chart.Zoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/particles-config.js"></script>
+  <script src="js/osint-charts.js"></script>
+
+</body>
+</html>
