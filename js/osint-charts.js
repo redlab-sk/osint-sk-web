@@ -17,8 +17,7 @@ var stats_list = [
     "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ssl.json",
     "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ics.json",
     "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-cve.json",
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-bluekeep_org.json",
-
+    //"https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-bluekeep_org.json",
 ]
 
 
@@ -365,3 +364,195 @@ options: {
 
 
 });
+
+/* 
+------------------------------ cve ------------------------------
+*/
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-cve.json", function(result) {
+var data = result;
+var cve = {"date":{},"cve-2016-8612": {},"cve-2014-0231": {},"cve-2017-7679": {},"cve-2019-0220": {},"cve-2017-9788": {},"cve-2017-9798": {},"cve-2019-0211": {},"cve-2017-15710": {},"cve-2018-1283": {},"cve-2018-17199": {},"cve-2017-7668": {},"cve-2018-1312": {},"cve-2013-6438": {},"cve-2017-3167": {},"cve-2017-3169": {},"cve-2016-4975": {},"cve-2016-8743": {},"cve-2019-0197": {},"cve-2014-0098": {},"cve-2017-15715": {}};
+
+
+for (var service in cve) {
+    cve[service] = result.cve.map(function(e) {
+        return e[service];
+        }); 
+}
+
+var ctx_cve = document.getElementById("cveChart");
+var cveChart = new Chart(ctx_cve, {
+type: 'line',
+data: {
+    labels: cve.date,
+    datasets: [{
+        label: 'cve-2016-8612',
+        data: cve["cve-2016-8612"],
+        borderColor: 'rgba(200, 0, 0, 0.8)',
+        fill: false, 
+    },
+    {
+        label: 'cve-2014-0231',
+        data: cve["cve-2014-0231"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-7679',
+        data: cve["cve-2017-7679"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2019-0220',
+        data: cve["cve-2019-0220"],
+        borderColor: 'rgba(0, 0, 0, 0,0.5)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-9788',
+        data: cve["cve-2017-9788"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-9798',
+        data: cve["cve-2017-9798"],
+        borderColor: 'rgba(0, 0, 0, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2019-0211',
+        data: cve["cve-2019-0211"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-15710',
+        data: cve["cve-2017-15710"],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2018-1283',
+        data: cve["cve-2018-1283"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2018-17199',
+        data: cve["cve-2018-17199"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-7668',
+        data: cve["cve-2017-7668"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-7668',
+        data: cve["cve-2017-7668"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2013-6438',
+        data: cve["cve-2013-6438"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-3167',
+        data: cve["cve-2017-3167"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2017-3169',
+        data: cve["cve-2017-3169"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2016-4975',
+        data: cve["cve-2016-4975"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'cve-2016-8743',
+        data: cve["cve-2016-8743"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },                             
+    {
+        label: 'cve-2019-0197',
+        data: cve["cve-2019-0197"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },                             
+    {
+        label: 'cve-2014-0098',
+        data: cve["cve-2014-0098"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },                            
+    {
+        label: 'cve-2017-15715',
+        data: cve["cve-2017-15715"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },                                          
+    ]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 1000, //minimum tick
+                max: 15000, //maximum tick
+                callback: function (value, index, values) {
+                    return Number(value.toString());//pass tick values as a string into Number function
+                }
+           },
+           afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+               chartObj.ticks = [];
+               chartObj.ticks.push(0.1);
+               chartObj.ticks.push(1);
+               chartObj.ticks.push(10);
+               chartObj.ticks.push(100);
+               chartObj.ticks.push(1000);
+               chartObj.ticks.push(10000);
+               chartObj.ticks.push(100000);
+           },
+            type: 'logarithmic'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    }
+}
+});
+
+
+});
+
