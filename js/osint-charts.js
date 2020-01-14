@@ -24,7 +24,7 @@ var stats_list = [
 $.each(stats_list, function( lk, lv ) {
     $.getJSON(lv, function(result) {
         $.each(result, function( k, v ) {
-            var kr=k.replace(/ /g, '-').replace(/\./g, '-');
+            var kr=k.replace(/ /g, '-').replace(/\./g, '-').replace(/,/g, '-');
             $("#"+kr).text(v);
             $("#carousel-"+kr).text(v);
             });
@@ -788,6 +788,184 @@ options: {
         // Eg. 'y' would only allow panning in the y direction
         mode: 'x',
         
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    }
+}
+});
+
+
+});
+
+
+/* 
+------------------------------ bluekeep ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-bluekeep_org.json", function(result) {
+var data = result;
+var bluekeep = { "date":{},"Cloud Services CZ": {},"LightStorm Communications s.r.o.": {},"Slovanet a.s.": {},"Slovak Telekom": {},"MyjavaNET, s.r.o.": {}, "Orange Slovensko, a.s.": {}, "RadioLAN": {},"ANTIK NAT Customers": {},"Zdruzenie pouzivatelov Slovenskej akademickej dato": {}, "NETLAB plus, spol. s r. o.": {}, "Orange Slovensko a.s.": {},"UPC Slovakia": {},"DSI DATA, a. s.": {}, "University of Zilina": {}, "SWAN, a.s.": {},"DTnet Detva s.r.o.": {},"Slovak Technical University": {},"VNET, a.s.": {},"Slovak Academy of Sciences": {},"Slovak Telecom": {}};
+
+for (var port in bluekeep) {
+    bluekeep[port] = result.bluekeep.map(function(e) {
+        return e[port];
+        }); 
+}
+
+var ctx_bluekeep = document.getElementById("bluekeepChart");
+var bluekeepChart = new Chart(ctx_bluekeep, {
+type: 'line',
+data: {
+    labels: bluekeep.date,
+    datasets: [{
+        label: 'Cloud Services CZ',
+        data: bluekeep["Cloud Services CZ"],
+        borderColor: 'rgba(200, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'LightStorm Communications s.r.o.',
+        data: bluekeep["LightStorm Communications s.r.o. "],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'Slovanet a.s.',
+        data: bluekeep["Slovanet a.s."],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'Slovak Telekom',
+        data: bluekeep["Slovak Telekom"],
+        borderColor: 'rgba(180, 0, 0, 0,0.6)', 
+        fill: true,
+    },
+    {
+        label: 'MyjavaNET, s.r.o.',
+        data: bluekeep["MyjavaNET, s.r.o."],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: true,
+    },
+    {
+        label: 'Orange Slovensko, a.s. ',
+        data: bluekeep["Orange Slovensko, a.s. "],
+        borderColor: 'rgba(0, 0, 0, 0.2)', 
+        fill: true,
+    },
+    {
+        label: 'RadioLAN',
+        data: bluekeep["RadioLAN"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'ANTIK NAT Customers',
+        data: bluekeep["ANTIK NAT Customers"],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: true,
+    },
+    {
+        label: 'Zdruzenie pouzivatelov Slovenskej akademickej dato',
+        data: bluekeep["Zdruzenie pouzivatelov Slovenskej akademickej dato"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: true,
+    },
+    {
+        label: 'NETLAB plus, spol. s r. o.',
+        data: bluekeep["NETLAB plus, spol. s r. o."],
+        borderColor: 'rgba(190, 70, 20, 0.1)', 
+        fill: true,
+    },
+    {
+        label: 'Orange Slovensko a.s.',
+        data: bluekeep["Orange Slovensko a.s."],
+        borderColor: 'rgba(200, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'UPC Slovakia',
+        data: bluekeep["UPC Slovakia"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'DSI DATA, a. s.',
+        data: bluekeep["DSI DATA, a. s."],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'University of Zilina ',
+        data: bluekeep["University of Zilina "],
+        borderColor: 'rgba(0, 0, 0, 0,0.5)', 
+        fill: true,
+    },
+    {
+        label: 'SWAN, a.s.',
+        data: bluekeep["SWAN, a.s."],
+        borderColor: 'rgba(160, 20, 20, 1)', 
+        fill: true,
+    },
+    {
+        label: 'DTnet Detva s.r.o.',
+        data: bluekeep["DTnet Detva s.r.o."],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: true,
+    },
+    {
+        label: 'Slovak Technical University',
+        data: bluekeep["Slovak Technical University"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: true,
+    },
+    {
+        label: 'VNET, a.s.',
+        data: bluekeep["VNET, a.s."],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: true,
+    },
+    {
+        label: 'Slovak Academy of Sciences',
+        data: bluekeep["Slovak Academy of Sciences"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: true,
+    },
+    {
+        label: 'Slovak Telecom',
+        data: bluekeep["Slovak Telecom"],
+        borderColor: 'rgba(120, 0, 0, 1)', 
+        fill: true,
+    },                    
+    ]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 0.1, //minimum tick
+                max: 500, //maximum tick
+            },
+            stacked: true,
+            type: 'linear'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
         speed: 1
     },
 

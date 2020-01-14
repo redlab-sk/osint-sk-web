@@ -728,6 +728,140 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
 
 
+
+<hr />
+
+<!-- bluekeep BEGIN -->
+<section id="bluekeep">
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="section-heading text-uppercase">BlueKeep (CVE- 2019-0708)</h1>
+        <h3 class="section-subheading text-muted">Týždenné štatistiky o výskyte zraniteľnosti BlueKeep (CVE- 2019-0708) na slovenských IP adresách.</h3>
+      </div>
+    </div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+    <canvas id="bluekeepChart" width="600px" height="100px"></canvas>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad výskytu zraniteľnosti BlueKeep (CVE- 2019-0708)  na slovenských IP adresách. Je aktualizovaná týždenne na základe aktuálnych dát zo služby Shodan. Zdrojové dáta su aktualizované priebežne na základe výsledkov aktívneho skenu siete. Priemerná doba aktualizácie dát pre danú službu na konkrétnej IP adrese (re-scan) je aktuálne 1 mesiac.</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">Cloud Services CZ<span class="badge badge-primary badge-pill" id="Cloud-Services-CZ">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">LightStorm Communications s.r.o. <span class="badge badge-primary badge-pill" id="LightStorm-Communications-s-r-o-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Slovanet a.s.<span class="badge badge-primary badge-pill" id="Slovanet-a-s-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Slovak Telekom<span class="badge badge-primary badge-pill" id="Slovak-Telekom">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">MyjavaNET, s.r.o. <span class="badge badge-primary badge-pill" id="MyjavaNET--s-r-o-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Orange Slovensko, a.s. <span class="badge badge-primary badge-pill" id="Orange-Slovensko--a-s-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">RadioLAN<span class="badge badge-primary badge-pill" id="RadioLAN">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">ANTIK NAT Customers<span class="badge badge-primary badge-pill" id="ANTIK-NAT-Customers">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Zdruzenie pouzivatelov Slovenskej akademickej dato <span class="badge badge-primary badge-pill" id="Zdruzenie-pouzivatelov-Slovenskej-akademickej-dato">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">NETLAB plus, spol. s r. o. <span class="badge badge-primary badge-pill" id="NETLAB-plus--spol--s-r--o-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Orange Slovensko a.s.<span class="badge badge-primary badge-pill" id="Orange-Slovensko-a-s-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">UPC Slovakia<span class="badge badge-primary badge-pill" id="UPC-Slovakia">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">DSI DATA, a. s. <span class="badge badge-primary badge-pill" id="DSI-DATA--a--s-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">University of Zilina <span class="badge badge-primary badge-pill" id="University-of-Zilina">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">SWAN, a.s.<span class="badge badge-primary badge-pill" id="SWAN--a-s-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">DTnet Detva s.r.o.<span class="badge badge-primary badge-pill" id="DTnet-Detva-s-r-o-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Slovak Technical University<span class="badge badge-primary badge-pill" id="Slovak-Technical-University">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">VNET, a.s.<span class="badge badge-primary badge-pill" id="VNET--a-s-">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Slovak Academy of Sciences<span class="badge badge-primary badge-pill" id="Slovak-Academy-of-Sciences">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Slovak Telecom<span class="badge badge-primary badge-pill" id="Slovak-Telecom">0</span></li>
+          </ul>
+      </div>
+   
+  </div>
+
+
+<div class="container mt-5 mb-5">
+    <a href="#bluekeep-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+</div>
+
+<div class="container mt-5 mb-5 panel-collapse collapse" id="bluekeep-dataset-show">
+  <div class="row text-center">
+
+    <div class="col-md-6">
+      <h3 class="stats-heading">stats-bluekeep</h3>
+      <p class="text-muted">Denná štatistika výskytu BlueKeep.</p>
+      <pre class="text-left">
+        {
+            "Cloud Services CZ": 11, 
+            "LightStorm Communications s.r.o.": 4, 
+            "Slovanet a.s.": 14, 
+            "Slovak Telekom": 89, 
+            "MyjavaNET, s.r.o.": 3, 
+            "Orange Slovensko, a.s.": 15, 
+            "RadioLAN": 4, 
+            "ANTIK NAT Customers": 6, 
+            "Zdruzenie pouzivatelov Slovenskej akademickej dato": 8, 
+            "NETLAB plus, spol. s r. o.": 4, 
+            "Orange Slovensko a.s.": 13, 
+            "UPC Slovakia": 18, 
+            "DSI DATA, a. s.": 13, 
+            "University of Zilina": 20, 
+            "SWAN, a.s.": 62, 
+            "DTnet Detva s.r.o.": 4, 
+            "Slovak Technical University": 8, 
+            "VNET, a.s.": 8, 
+            "Slovak Academy of Sciences": 9, 
+            "Slovak Telecom": 100
+        }
+        </pre>
+    </div>
+
+    <div class="col-md-6">
+        <h4 class="stats-heading">trends-bluekeep</h4>
+        <p class="text-muted">Celkový trend výskytu BlueKeep.</p>
+        <pre class="text-left">
+            {
+                "Cloud Services CZ": 11, 
+                "LightStorm Communications s.r.o.": 4, 
+                "Slovanet a.s.": 14, 
+                "Slovak Telekom": 89, 
+                "MyjavaNET, s.r.o.": 3, 
+                "Orange Slovensko, a.s.": 15, 
+                "RadioLAN": 4, 
+                "ANTIK NAT Customers": 6, 
+                "Zdruzenie pouzivatelov Slovenskej akademickej dato": 8, 
+                "NETLAB plus, spol. s r. o.": 4, 
+                "Orange Slovensko a.s.": 13, 
+                "UPC Slovakia": 18, 
+                "DSI DATA, a. s.": 13, 
+                "University of Zilina": 20, 
+                "SWAN, a.s.": 62, 
+                "date": "2020-01-14", 
+                "DTnet Detva s.r.o.": 4, 
+                "Slovak Technical University": 8, 
+                "VNET, a.s.": 8, 
+                "Slovak Academy of Sciences": 9, 
+                "Slovak Telecom": 100
+            }, 
+          ]
+        } 
+          </pre>
+      </div>
+
+  </div>
+  <div class="row text-center">
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-bluekeep_org.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+      </div>
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-bluekeep_org.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+      </div>
+  </div>
+</div>
+
+</section>
+<!-- bluekeep END -->
+
+
 <hr />
 
 <!-- projekt BEGIN -->
