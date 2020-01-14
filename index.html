@@ -509,6 +509,134 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
 <hr />
 
+<!-- ics BEGIN -->
+<section id="ics">
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="section-heading text-uppercase">ICS (Industrial Control Systems)</h1>
+        <h3 class="section-subheading text-muted">Týždenné štatistiky o ICS zariadeniach dostupných na slovenských IP adresách.</h3>
+      </div>
+    </div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+    <canvas id="icsChart" width="600px" height="100px"></canvas>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad ICS zariadení dostupných na slovenských IP adresách. Je aktualizovaná týždenne na základe aktuálnych dát zo služby Shodan. Zdrojové dáta su aktualizované priebežne na základe výsledkov aktívneho skenu siete. Priemerná doba aktualizácie dát pre danú službu na konkrétnej IP adrese (re-scan) je aktuálne 1 mesiac.</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">Modbus<span class="badge badge-primary badge-pill" id="Modbus">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">DNP3<span class="badge badge-primary badge-pill" id="DNP3">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">IEC-60870-5-104 <span class="badge badge-primary badge-pill" id="IEC-60870-5-104">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">CODESYS <span class="badge badge-primary badge-pill" id="CODESYS">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">ProConOS <span class="badge badge-primary badge-pill" id="ProConOS">0</span></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">EtherNet-IP <span class="badge badge-primary badge-pill" id="EtherNet-IP">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">OMRON-FINS <span class="badge badge-primary badge-pill" id="OMRON-FINS">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Siemens-S7<span class="badge badge-primary badge-pill" id="Siemens-S7">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">PCWorx<span class="badge badge-primary badge-pill" id="PCWorx">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Crimson-v3<span class="badge badge-primary badge-pill" id="Crimson-v3">0</span></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+          <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">BACnet <span class="badge badge-primary badge-pill" id="BACnet">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">Niagara <span class="badge badge-primary badge-pill" id="Niagara">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">HART-IP <span class="badge badge-primary badge-pill" id="HART-IP">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">GE-SRTP <span class="badge badge-primary badge-pill" id="GE-SRTP">0</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">MELSEC-Q <span class="badge badge-primary badge-pill" id="MELSEC-Q">0</span></li>
+          </ul>
+      </div>
+   
+  </div>
+
+
+<div class="container mt-5 mb-5">
+    <a href="#ics-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+</div>
+
+<div class="container mt-5 mb-5 panel-collapse collapse" id="ics-dataset-show">
+  <div class="row text-center">
+
+    <div class="col-md-6">
+      <h3 class="stats-heading">stats-ics</h3>
+      <p class="text-muted">Denná štatistika dostupných ICS zariadení.</p>
+      <pre class="text-left">
+    {
+        "ProConOS": 0, 
+        "EtherNet-IP": 68, 
+        "OMRON-FINS": 1, 
+        "Siemens-S7": 43, 
+        "PCWorx": 0, 
+        "Crimson-v3": 0, 
+        "Modbus": 111, 
+        "BACnet": 29, 
+        "Niagara": 95, 
+        "CODESYS": 4, 
+        "DNP3": 4, 
+        "IEC-60870-5-104": 10, 
+        "HART-IP": 0, 
+        "GE-SRTP": 0, 
+        "MELSEC-Q": 0
+    }
+        </pre>
+    </div>
+
+    <div class="col-md-6">
+        <h4 class="stats-heading">trends-ics</h4>
+        <p class="text-muted">Celkový trend dostupnosti ICS zariadení.</p>
+        <pre class="text-left">
+        {
+            "ics": [
+                {
+                    "ProConOS": 0, 
+                    "EtherNet-IP": 66, 
+                    "OMRON-FINS": 2, 
+                    "Siemens-S7": 54, 
+                    "PCWorx": 0, 
+                    "Crimson-v3": 0, 
+                    "Modbus": 104, 
+                    "BACnet": 29, 
+                    "Niagara": 104, 
+                    "CODESYS": 3, 
+                    "date": "2019-12-01", 
+                    "DNP3": 3, 
+                    "IEC-60870-5-104": 8, 
+                    "HART-IP": 0, 
+                    "GE-SRTP": 0, 
+                    "MELSEC-Q": 0
+                }, 
+          ]
+        } 
+          </pre>
+      </div>
+
+  </div>
+  <div class="row text-center">
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ics.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+      </div>
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-ics.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+      </div>
+  </div>
+</div>
+
+</section>
+<!-- ics END -->
+
+
+<hr />
+
 <!-- projekt BEGIN -->
 <section id="project">
     <div class="container mt-5">

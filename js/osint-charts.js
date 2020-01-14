@@ -17,15 +17,16 @@ var stats_list = [
     "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ssl.json",
     "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ics.json",
     "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-cve.json",
-    //"https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-bluekeep_org.json",
+    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-bluekeep_org.json",
 ]
 
 
 $.each(stats_list, function( lk, lv ) {
     $.getJSON(lv, function(result) {
         $.each(result, function( k, v ) {
-            $("#"+k).text(v);
-            $("#carousel-"+k).text(v);
+            var kr=k.replace(/ /g, '-').replace(/\./g, '-');
+            $("#"+kr).text(v);
+            $("#carousel-"+kr).text(v);
             });
         });
 });
@@ -556,3 +557,148 @@ options: {
 
 });
 
+/* 
+------------------------------ ics ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-ics.json", function(result) {
+var data = result;
+var ics = { "date":{},"Modbus": {},"DNP3": {},"IEC-60870-5-104": {},"CODESYS": {},"ProConOS": {},"EtherNet-IP": {},"OMRON-FINS": {},"Siemens-S7": {},"PCWorx": {},"Crimson-v3": {},"BACnet": {},"Niagara": {},"HART-IP": {},"GE-SRTP": {},"MELSEC-Q": {}};
+
+for (var port in ics) {
+    ics[port] = result.ics.map(function(e) {
+        return e[port];
+        }); 
+}
+
+var ctx_ics = document.getElementById("icsChart");
+var icsChart = new Chart(ctx_ics, {
+type: 'line',
+data: {
+    labels: ics.date,
+    datasets: [{
+        label: 'Modbus',
+        data: ics["Modbus"],
+        borderColor: 'rgba(200, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'DNP3',
+        data: ics["DNP3"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'IEC-60870-5-104',
+        data: ics["IEC-60870-5-104"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'CODESYS',
+        data: ics["CODESYS"],
+        borderColor: 'rgba(0, 0, 0, 0,0.5)', 
+        fill: false,
+    },
+    {
+        label: 'ProConOS',
+        data: ics["ProConOS"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'EtherNet-IP',
+        data: ics["EtherNet-IP"],
+        borderColor: 'rgba(0, 0, 0, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'OMRON-FINS',
+        data: ics["OMRON-FINS"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'Siemens-S7',
+        data: ics["Siemens-S7"],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: false,
+    },
+    {
+        label: 'PCWorx',
+        data: ics["PCWorx"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'Crimson-v3',
+        data: ics["Crimson-v3"],
+        borderColor: 'rgba(190, 70, 20, 0.1)', 
+        fill: false,
+    },
+    {
+        label: 'BACnet',
+        data: ics["BACnet"],
+        borderColor: 'rgba(200, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'Niagara',
+        data: ics["Niagara"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'HART-IP',
+        data: ics["HART-IP"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'GE-SRTP',
+        data: ics["GE-SRTP"],
+        borderColor: 'rgba(0, 0, 0, 0,0.5)', 
+        fill: false,
+    },
+    {
+        label: 'MELSEC-Q',
+        data: ics["MELSEC-Q"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    ]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 0.1, //minimum tick
+                max: 160, //maximum tick
+            },
+            type: 'linear'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    }
+}
+});
+
+
+});
