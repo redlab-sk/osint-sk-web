@@ -637,6 +637,99 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
 <hr />
 
+<!-- ssl BEGIN -->
+<section id="ssl">
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="section-heading text-uppercase">HTTP vs HTTPS</h1>
+        <h3 class="section-subheading text-muted">Týždenné štatistiky o využívaní HTTPS na slovenských IP adresách.</h3>
+      </div>
+    </div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+    <canvas id="sslChart" width="600px" height="100px"></canvas>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad použiti HTTPS na slovenských IP adresách. Je aktualizovaná týždenne na základe aktuálnych dát zo služby Shodan. Zdrojové dáta su aktualizované priebežne na základe výsledkov aktívneho skenu siete. Priemerná doba aktualizácie dát pre danú službu na konkrétnej IP adrese (re-scan) je aktuálne 1 mesiac.</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">HTTP<span class="badge badge-primary badge-pill" id="http">0</span></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">HTTPS<span class="badge badge-primary badge-pill" id="https">0</span></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+          <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">Expirovaný certifikát <span class="badge badge-primary badge-pill" id="cert_expired">0</span></li>
+          </ul>
+      </div>
+   
+  </div>
+
+
+<div class="container mt-5 mb-5">
+    <a href="#ssl-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+</div>
+
+<div class="container mt-5 mb-5 panel-collapse collapse" id="ssl-dataset-show">
+  <div class="row text-center">
+
+    <div class="col-md-6">
+      <h3 class="stats-heading">stats-ssl</h3>
+      <p class="text-muted">Denná štatistika dostupnosti HTTPS.</p>
+      <pre class="text-left">
+        {
+            "cert_expired": 5546, 
+            "http": 158927, 
+            "https": 40206
+        }
+        </pre>
+    </div>
+
+    <div class="col-md-6">
+        <h4 class="stats-heading">trends-ssl</h4>
+        <p class="text-muted">Celkový trend dostupnosti HTTPS.</p>
+        <pre class="text-left">
+        {
+            "ssl": [
+                {
+                    "date": "2019-12-01", 
+                    "cert_expired": 6235, 
+                    "http": 169351, 
+                    "https": 42573
+                }, 
+          ]
+        } 
+          </pre>
+      </div>
+
+  </div>
+  <div class="row text-center">
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ssl.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+      </div>
+      <div class="col-md-6">
+          <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-ssl.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+      </div>
+  </div>
+</div>
+
+</section>
+<!-- ssl END -->
+
+
+
+<hr />
+
 <!-- projekt BEGIN -->
 <section id="project">
     <div class="container mt-5">

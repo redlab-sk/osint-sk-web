@@ -87,6 +87,7 @@ data: {
         data: db.Riak,
         borderColor: 'rgba(0, 0, 0, 0,0.5)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'Elastic',
@@ -111,12 +112,14 @@ data: {
         data: db.Casandra,
         borderColor: 'rgba(190, 70, 30, 0.4)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'CouchDB',
         data: db.CouchDB,
         borderColor: 'rgba(190, 70, 30, 0.2)', 
         fill: false,
+        hidden: true,
     },
     ]
 },
@@ -278,6 +281,7 @@ data: {
         data: ports["7547"],
         borderColor: 'rgba(0, 0, 0, 1)', 
         fill: false,
+        hidden: true,
     },
     {
         label: '80',
@@ -308,6 +312,7 @@ data: {
         data: ports["995"],
         borderColor: 'rgba(190, 70, 30, 0.2)', 
         fill: false,
+        hidden: true,
     },
     {
         label: '8291',
@@ -606,6 +611,7 @@ data: {
         data: ics["ProConOS"],
         borderColor: 'rgba(0, 0, 0, 1)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'EtherNet-IP',
@@ -630,12 +636,14 @@ data: {
         data: ics["PCWorx"],
         borderColor: 'rgba(190, 70, 30, 0.2)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'Crimson-v3',
         data: ics["Crimson-v3"],
         borderColor: 'rgba(190, 70, 20, 0.1)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'BACnet',
@@ -654,18 +662,21 @@ data: {
         data: ics["HART-IP"],
         borderColor: 'rgba(150, 0, 0, 0.8)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'GE-SRTP',
         data: ics["GE-SRTP"],
         borderColor: 'rgba(0, 0, 0, 0,0.5)', 
         fill: false,
+        hidden: true,
     },
     {
         label: 'MELSEC-Q',
         data: ics["MELSEC-Q"],
         borderColor: 'rgba(0, 0, 0, 1)', 
         fill: false,
+        hidden: true,
     },
     ]
 },
@@ -686,6 +697,97 @@ options: {
         // Panning directions. Remove the appropriate direction to disable 
         // Eg. 'y' would only allow panning in the y direction
         mode: 'x',
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    }
+}
+});
+
+
+});
+
+
+/* 
+------------------------------ ssl ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/shodan/trends-ssl.json", function(result) {
+var data = result;
+var ssl = { "date":{},"cert_expired": {},"http": {},"https": {}};
+
+for (var port in ssl) {
+    ssl[port] = result.ssl.map(function(e) {
+        return e[port];
+        }); 
+}
+
+var ctx_ssl = document.getElementById("sslChart");
+var sslChart = new Chart(ctx_ssl, {
+type: 'line',
+data: {
+    labels: ssl.date,
+    datasets: [{
+        label: 'http',
+        data: ssl["http"],
+        borderColor: 'rgba(200, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'https',
+        data: ssl["https"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: true,
+    },
+    {
+        label: 'cert_expired',
+        data: ssl["cert_expired"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: true,
+    },
+    ]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 1000, //minimum tick
+                max: 180000, //maximum tick
+                callback: function (value, index, values) {
+                    return Number(value.toString());//pass tick values as a string into Number function
+                }
+           },
+           afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+               chartObj.ticks = [];
+               chartObj.ticks.push(0.1);
+               chartObj.ticks.push(1);
+               chartObj.ticks.push(10);
+               chartObj.ticks.push(100);
+               chartObj.ticks.push(1000);
+               chartObj.ticks.push(10000);
+               chartObj.ticks.push(100000);
+               chartObj.ticks.push(1000000);
+           },
+            type: 'logarithmic'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        
         speed: 1
     },
 
