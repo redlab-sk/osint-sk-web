@@ -11,25 +11,14 @@
  88888P'  "Y888 "Y888888  "Y888  88888P' 
 */
 
-var stats_list = [
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-db.json",
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ports.json",
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ssl.json",
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-ics.json",
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-cve.json",
-    "https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/shodan/stats-bluekeep_org.json",
-]
-
-
-$.each(stats_list, function( lk, lv ) {
-    $.getJSON(lv, function(result) {
-        $.each(result, function( k, v ) {
-            var kr=k.replace(/ /g, '-').replace(/\./g, '-').replace(/,/g, '-');
-            $("#"+kr).text(v);
-            $("#carousel-"+kr).text(v);
-            });
+// Populate actual stats and carousel from las entry in trends
+function stats(data) {
+    $.each(data, function( k, v ) {
+        var kr=k.replace(/ /g, '-').replace(/\./g, '-').replace(/,/g, '-');
+        $("#"+kr).text(v[v.length - 1]);
+        $("#carousel-"+kr).text(v[v.length - 1]);
         });
-});
+}
 
 
 /*
@@ -58,6 +47,10 @@ for (var service in db) {
         return e[service];
         }); 
 }
+
+
+stats(db); // populate actual stats
+
 
 var ctx_db = document.getElementById("dbChart");
 var dbChart = new Chart(ctx_db, {
@@ -186,6 +179,8 @@ for (var port in ports) {
         return e[port];
         }); 
 }
+
+stats(ports); // populate actual stats
 
 var ctx_ports = document.getElementById("portsChart");
 var portsChart = new Chart(ctx_ports, {
@@ -386,6 +381,8 @@ for (var service in cve) {
         }); 
 }
 
+stats(cve); // populate actual stats
+
 var ctx_cve = document.getElementById("cveChart");
 var cveChart = new Chart(ctx_cve, {
 type: 'line',
@@ -577,6 +574,8 @@ for (var port in ics) {
         }); 
 }
 
+stats(ics); // populate actual stats
+
 var ctx_ics = document.getElementById("icsChart");
 var icsChart = new Chart(ctx_ics, {
 type: 'line',
@@ -730,6 +729,8 @@ for (var port in ssl) {
         }); 
 }
 
+stats(ssl); // populate actual stats
+
 var ctx_ssl = document.getElementById("sslChart");
 var sslChart = new Chart(ctx_ssl, {
 type: 'line',
@@ -820,6 +821,8 @@ for (var port in bluekeep) {
         return e[port];
         }); 
 }
+
+stats(bluekeep); // populate actual stats
 
 var ctx_bluekeep = document.getElementById("bluekeepChart");
 var bluekeepChart = new Chart(ctx_bluekeep, {
