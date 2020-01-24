@@ -123,16 +123,7 @@ particles
 carousel
 */
 
-.carousel{
-  margin-top: 10px;
-}
-.carousel-inner{
-  height: 100px;
-}
-.carousel-caption{
-  color: rgba(200, 0, 0, .8);
-  top: 50%;
-}
+
 .carousel-control-next,
 .carousel-control-prev {
     filter: invert(100%);
@@ -140,4 +131,8 @@ carousel
 
 .badge-carousel{
   color: black;
+}
+
+.carousel-item {
+    color: rgba(200, 0, 0, .8);
 }
