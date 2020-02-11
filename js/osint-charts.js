@@ -1269,3 +1269,175 @@ options: {
 
 
 });
+
+
+
+/* 
+------------------------------ domains_count_by_holder ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-count-by-holder.json", function(result) {
+var data = result;
+var domains_count_by_holder = { "date":{},"WY-98059": {},"ASC0007": {}, "MEDI-0096-581": {}, "H637573": {}, "WEST-SK": {}, "SWAN-0004": {}, "LLAR-0001": {}, "PTS1196641": {}, "sub_712895": {}, "NIC-HOSTING": {},"CSK-WHOISP": {},"H635897": {},"BLUE-0058":{},"sub_1140449":{}};
+
+for (var port in domains_count_by_holder) {
+    domains_count_by_holder[port] = result['domains-count-by-holder'].map(function(e) {
+        return e[port];
+        }); 
+}
+
+stats(domains_count_by_holder); // populate actual stats
+
+var ctx_domains_count_by_holder = document.getElementById("domains-count-by-holderChart");
+var domains_count_by_holderChart = new Chart(ctx_domains_count_by_holder, {
+type: 'line',
+data: {
+    labels: domains_count_by_holder.date,
+    datasets: [{
+        label: 'WEST-SK ',
+        data: domains_count_by_holder["WEST-SK "],
+        borderColor: 'rgba(80, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'PTS1196641',
+        data: domains_count_by_holder["PTS1196641"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'sub_712895',
+        data: domains_count_by_holder["sub_712895"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'CSK-WHOISP',
+        data: domains_count_by_holder["CSK-WHOISP"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'NIC-HOSTING',
+        data: domains_count_by_holder["NIC-HOSTING"],
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
+        fill: false,
+    },
+    {
+        label: 'LLAR-0001',
+        data: domains_count_by_holder["LLAR-0001"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'H635897',
+        data: domains_count_by_holder["H635897"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'MEDI-0096-581',
+        data: domains_count_by_holder["MEDI-0096-581"],
+        borderColor: 'rgba(0, 0, 0, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'H637573',
+        data: domains_count_by_holder["H637573"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'ASC0007',
+        data: domains_count_by_holder["ASC0007"],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: false,
+    },
+    {
+        label: 'WY-98059',
+        data: domains_count_by_holder["WY-98059"],
+        borderColor: 'rgba(150, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'SWAN-0004',
+        data: domains_count_by_holder["SWAN-0004"],
+        borderColor: 'rgba(130, 70, 20, 0.1)', 
+        fill: false,
+    },
+    {
+        label: 'BLUE-0058',
+        data: domains_count_by_holder["BLUE-0058"],
+        borderColor: 'rgba(120, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'sub_1140449',
+        data: domains_count_by_holder["sub_1140449"],
+        borderColor: 'rgba(110, 70, 20, 0.1)', 
+        fill: false,
+    },
+    ]
+},
+options: {
+    elements: {
+        point:{
+            radius: 0
+        },
+        line: {
+            tension: 0 // disables bezier curves
+        }
+    },
+    animation: {
+        duration: 0 // general animation time
+    },
+    hover: {
+        animationDuration: 0 // duration of animations when hovering an item
+    },
+    responsiveAnimationDuration: 0, // animation duration after a resize
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 200, //minimum tick
+                max: 3000, //maximum tick
+                callback: function (value, index, values) {
+                    return Number(value.toString());//pass tick values as a string into Number function
+                }
+           },
+           afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+               chartObj.ticks = [];
+               chartObj.ticks.push(0.1);
+               chartObj.ticks.push(1);
+               chartObj.ticks.push(10);
+               chartObj.ticks.push(100);
+               chartObj.ticks.push(1000);
+               chartObj.ticks.push(10000);
+           },
+            type: 'logarithmic'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    },
+    aspectRatio: 3,
+}
+});
+
+
+});

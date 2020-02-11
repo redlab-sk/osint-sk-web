@@ -308,6 +308,113 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
     </section>
     <!-- domains-count-by-registrar END -->
 
+    <!-- domains-count-by-holder BEGIN -->
+    <section id="domains-count-by-holder">
+
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="section-heading text-uppercase">Počet domén na držiteľa (Top10)</h1>
+          <h3 class="section-subheading text-muted">Denné štatistiky o počte domén podľa držiteľa</h3>
+        </div>
+      </div>
+
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+      <canvas id="domains-count-by-holderChart"></canvas>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad počtu domén prislúchajúcich k danému držiteľovi. Je aktualizovaná denne na základe aktuálnych dát zverejňovaným správcom domény, spoločnosťou <a class="text-muted" href="https://sk-nic.sk/" target="_blank">SK-NIC</a>.</h3>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">WEST-SK<span class="badge badge-primary badge-pill" id="WEST-SK">0</span></li> 
+          <li class="list-group-item d-flex justify-content-between align-items-center">PTS1196641<span class="badge badge-primary badge-pill" id="PTS1196641">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">sub_712895<span class="badge badge-primary badge-pill" id="sub_712895">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">NIC-HOSTING<span class="badge badge-primary badge-pill" id="NIC-HOSTING">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">LLAR-0001<span class="badge badge-primary badge-pill" id="LLAR-0001">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">MEDI-0096-581<span class="badge badge-primary badge-pill" id="MEDI-0096-581">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">H637573<span class="badge badge-primary badge-pill" id="H637573">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">ASC0007<span class="badge badge-primary badge-pill" id="ASC0007">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">WY-98059<span class="badge badge-primary badge-pill" id="WY-98059">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">SWAN-0004<span class="badge badge-primary badge-pill" id="SWAN-0004">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">CSK-WHOISP<span class="badge badge-primary badge-pill" id="CSK-WHOISP">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">H635897<span class="badge badge-primary badge-pill" id="H635897">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">BLUE-0058<span class="badge badge-primary badge-pill" id="BLUE-0058">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">sub_1140449<span class="badge badge-primary badge-pill" id="sub_1140449">0</span></li>
+       </ul>
+        </div>
+      
+    </div>
+
+
+  <div class="container mt-5 mb-5">
+      <a href="#domains-count-by-holder-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+  </div>
+
+  <div class="container mt-5 mb-5 panel-collapse collapse" id="domains-count-by-holder-dataset-show">
+    <div class="row text-center">
+
+      <div class="col-md-6">
+        <h3 class="stats-heading">stats-domains-count-by-holder</h3>
+        <p class="text-muted">Denná štatistika počtu domén na držiteľa.</p>
+        <pre class="text-left">
+          {
+              "WEST-SK": 2329, 
+              "PTS1196641": 1754, 
+              "NIC-HOSTING": 821, 
+              "H637573": 706, 
+              "MEDI-0096-581": 663, 
+              "SWAN-0004": 529, 
+              "CSK-WHOISP": 510, 
+              "WY-98059": 498, 
+              "ASC0007": 456, 
+              "H635897": 376,  
+          }
+          </pre>
+      </div>
+
+      <div class="col-md-6">
+          <h4 class="stats-heading">trends-domains-count-by-holder</h4>
+          <p class="text-muted">Celkový trend zmien počtu domén na držiteľa (Top10).</p>
+          <pre class="text-left">
+          {
+              "domains-count-by-holder": [
+                  {
+                      "WY-98059": 566, 
+                      "ASC0007": 568, 
+                      "MEDI-0096-581": 731, 
+                      "H637573": 711, 
+                      "WEST-SK": 2565, 
+                      "SWAN-0004": 529, 
+                      "LLAR-0001": 768, 
+                      "PTS1196641": 1775, 
+                      "sub_712895": 1302, 
+                      "date": "2019-04-09", 
+                      "NIC-HOSTING": 923
+                  },   
+            ]
+          } 
+            </pre>
+        </div>
+
+    </div>
+    <div class="row text-center">
+        <div class="col-md-6">
+            <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/domain/stats-count-by-holder.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+        </div>
+        <div class="col-md-6">
+            <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-count-by-holder.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+        </div>
+    </div>
+  </div>
+
+  </section>
+  <!-- domains-count-by-holder END -->
+
+
       <hr />    
 <!-- databazy BEGIN -->
 <section id="db">
