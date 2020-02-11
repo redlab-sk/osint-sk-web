@@ -991,3 +991,78 @@ options: {
 
 
 });
+
+
+/* 
+------------------------------ domain-changes ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-domain-changes.json", function(result) {
+var data = result;
+var domain_changes = { "date":{},"added": {},"deleted": {}};
+
+for (var port in domain_changes) {
+    domain_changes[port] = result['domain-changes'].map(function(e) {
+        return e[port];
+        }); 
+}
+
+stats(domain_changes); // populate actual stats
+
+var ctx_domain_changes = document.getElementById("domain-changesChart");
+var domain_changesChart = new Chart(ctx_domain_changes, {
+type: 'line',
+data: {
+    labels: domain_changes.date,
+    datasets: [{
+        label: 'Pridané',
+        data: domain_changes["added"],
+        borderColor: 'rgba(200, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'Odobrané',
+        data: domain_changes["deleted"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: true,
+    },
+    ]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 0.1, //minimum tick
+                max: 1500, //maximum tick
+            },
+            stacked: false,
+            type: 'linear'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    },
+    aspectRatio: 3,
+}
+});
+
+
+});
