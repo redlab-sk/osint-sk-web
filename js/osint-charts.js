@@ -319,6 +319,11 @@ data: {
     ]
 },
 options: {
+    elements: {
+        line:{
+            spanGaps: true
+        }
+    },
     scales: {
         yAxes: [{
             ticks: {
@@ -1049,6 +1054,155 @@ options: {
         // Eg. 'y' would only allow panning in the y direction
         mode: 'x',
         
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    },
+    aspectRatio: 3,
+}
+});
+
+
+});
+
+
+/* 
+------------------------------ domains_count_by_registrar ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-count-by-registrar.json", function(result) {
+var data = result;
+var domains_count_by_registrar = { "date":{},"Webglobe - Yegon, s. r. o.":{},"ZONER s.r.o.":{},"INTERNET SK, s.r.o.":{},"Websupport, s.r.o.":{},"WebHouse, s.r.o.":{},"IGNUM s.r.o.":{},"WEDOS Internet, a.s.":{},"ACTIVE 24, s.r.o.":{},"Gransy s.r.o.":{},"EXO TECHNOLOGIES spol. s r.o.":{}};
+
+for (var port in domains_count_by_registrar) {
+    domains_count_by_registrar[port] = result['domains-count-by-registrar'].map(function(e) {
+        return e[port];
+        }); 
+}
+
+stats(domains_count_by_registrar); // populate actual stats
+
+var ctx_domains_count_by_registrar = document.getElementById("domains-count-by-registrarChart");
+var domains_count_by_registrarChart = new Chart(ctx_domains_count_by_registrar, {
+type: 'line',
+data: {
+    labels: domains_count_by_registrar.date,
+    datasets: [{
+        label: 'Webglobe - Yegon, s. r. o.',
+        data: domains_count_by_registrar["Webglobe - Yegon, s. r. o."],
+        borderColor: 'rgba(80, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'ZONER s.r.o.',
+        data: domains_count_by_registrar["ZONER s.r.o."],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'INTERNET SK, s.r.o.',
+        data: domains_count_by_registrar["INTERNET SK, s.r.o."],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'Websupport, s.r.o.',
+        data: domains_count_by_registrar["Websupport, s.r.o."],
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
+        fill: false,
+    },
+    {
+        label: 'WebHouse, s.r.o.',
+        data: domains_count_by_registrar["WebHouse, s.r.o."],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'IGNUM s.r.o.',
+        data: domains_count_by_registrar["IGNUM s.r.o."],
+        borderColor: 'rgba(0, 0, 0, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'WEDOS Internet, a.s.',
+        data: domains_count_by_registrar["WEDOS Internet, a.s."],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'ACTIVE 24, s.r.o.',
+        data: domains_count_by_registrar["ACTIVE 24, s.r.o."],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: false,
+    },
+    {
+        label: 'Gransy s.r.o.',
+        data: domains_count_by_registrar["Gransy s.r.o."],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'EXO TECHNOLOGIES spol. s r.o.',
+        data: domains_count_by_registrar["EXO TECHNOLOGIES spol. s r.o."],
+        borderColor: 'rgba(190, 70, 20, 0.1)', 
+        fill: false,
+    },
+    ]
+},
+options: {
+    elements: {
+        point:{
+            radius: 0
+        },
+        line: {
+            tension: 0 // disables bezier curves
+        }
+    },
+    animation: {
+        duration: 0 // general animation time
+    },
+    hover: {
+        animationDuration: 0 // duration of animations when hovering an item
+    },
+    responsiveAnimationDuration: 0, // animation duration after a resize
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 5000, //minimum tick
+                max: 150000, //maximum tick
+                callback: function (value, index, values) {
+                    return Number(value.toString());//pass tick values as a string into Number function
+                }
+           },
+           afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+               chartObj.ticks = [];
+               chartObj.ticks.push(0.1);
+               chartObj.ticks.push(1);
+               chartObj.ticks.push(10);
+               chartObj.ticks.push(100);
+               chartObj.ticks.push(1000);
+               chartObj.ticks.push(10000);
+               chartObj.ticks.push(100000);
+               chartObj.ticks.push(1000000);
+           },
+            type: 'logarithmic'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
         speed: 1
     },
 

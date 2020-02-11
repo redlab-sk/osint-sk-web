@@ -201,6 +201,112 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
       <!-- domain-changes END -->
       
 
+      <hr />
+
+    <!-- domains-count-by-registrar BEGIN -->
+    <section id="domains-count-by-registrar">
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h1 class="section-heading text-uppercase">Počet domén na registrátora (Top10)</h1>
+            <h3 class="section-subheading text-muted">Denné štatistiky o počte domén podľa registrátora</h3>
+          </div>
+        </div>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+        <canvas id="domains-count-by-registrarChart"></canvas>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad počtu domén prislúchajúcich k danému registrátorovi.Je aktualizovaná denne na základe aktuálnych dát zverejňovaným správcom domény, spoločnosťou <a class="text-muted" href="https://sk-nic.sk/" target="_blank">SK-NIC</a>.</h3>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">Websupport, s.r.o.<span class="badge badge-primary badge-pill" id="Websupport--s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">Webglobe - Yegon, s. r. o.<span class="badge badge-primary badge-pill" id="Webglobe---Yegon--s--r--o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">WebHouse, s.r.o.<span class="badge badge-primary badge-pill" id="WebHouse--s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">ACTIVE 24, s.r.o.<span class="badge badge-primary badge-pill" id="ACTIVE-24--s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">INTERNET SK, s.r.o.<span class="badge badge-primary badge-pill" id="INTERNET-SK--s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">Gransy s.r.o.<span class="badge badge-primary badge-pill" id="Gransy-s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">EXO TECHNOLOGIES spol. s r.o.<span class="badge badge-primary badge-pill" id="EXO-TECHNOLOGIES-spol--s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">WEDOS Internet, a.s.<span class="badge badge-primary badge-pill" id="WEDOS-Internet--a-s-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">ZONER s.r.o.<span class="badge badge-primary badge-pill" id="ZONER-s-r-o-">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">IGNUM s.r.o.<span class="badge badge-primary badge-pill" id="IGNUM-s-r-o-">0</span></li>
+          </ul>
+          </div>
+        
+      </div>
+
+
+    <div class="container mt-5 mb-5">
+        <a href="#domains-count-by-registrar-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Stiahnuť dáta</a>
+    </div>
+
+    <div class="container mt-5 mb-5 panel-collapse collapse" id="domains-count-by-registrar-dataset-show">
+      <div class="row text-center">
+
+        <div class="col-md-6">
+          <h3 class="stats-heading">stats-domains-count-by-registrar</h3>
+          <p class="text-muted">Denná štatistika počtu domén na registrátora.</p>
+          <pre class="text-left">
+            {
+                "Websupport, s.r.o.": 117548, 
+                "Webglobe - Yegon, s. r. o.": 38535, 
+                "WebHouse, s.r.o.": 32391, 
+                "ACTIVE 24, s.r.o.": 29128, 
+                "INTERNET SK, s.r.o.": 23249, 
+                "Gransy s.r.o.": 17122, 
+                "EXO TECHNOLOGIES spol. s r.o.": 17029, 
+                "WEDOS Internet, a.s.": 8446, 
+                "ZONER s.r.o.": 8331, 
+                "IGNUM s.r.o.": 5852, 
+                "ELBIA, s. r. o.": 4762, 
+                "SWAN, a.s.": 4480, 
+                "Slovak Telekom, a.s.": 3701, 
+            }
+            </pre>
+        </div>
+
+        <div class="col-md-6">
+            <h4 class="stats-heading">trends-domains-count-by-registrar</h4>
+            <p class="text-muted">Celkový trend zmien počtu domén na registrátora (Top10).</p>
+            <pre class="text-left">
+            {
+                "domains-count-by-registrar": [
+                    {
+                        "Webglobe - Yegon, s. r. o.": 37149, 
+                        "ZONER s.r.o.": 8707, 
+                        "INTERNET SK, s.r.o.": 21374, 
+                        "Websupport, s.r.o.": 109501, 
+                        "WebHouse, s.r.o.": 33496, 
+                        "IGNUM s.r.o.": 5792, 
+                        "WEDOS Internet, a.s.": 6228, 
+                        "date": "2019-04-09", 
+                        "ACTIVE 24, s.r.o.": 28744, 
+                        "Gransy s.r.o.": 17599, 
+                        "EXO TECHNOLOGIES spol. s r.o.": 17506
+                    },  
+              ]
+            } 
+              </pre>
+          </div>
+
+      </div>
+      <div class="row text-center">
+          <div class="col-md-6">
+              <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/actual/domain/stats-count-by-registrar.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+          </div>
+          <div class="col-md-6">
+              <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-count-by-registrar.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+          </div>
+      </div>
+    </div>
+
+    </section>
+    <!-- domains-count-by-registrar END -->
 
       <hr />    
 <!-- databazy BEGIN -->
