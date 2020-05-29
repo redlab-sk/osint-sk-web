@@ -136,3 +136,19 @@ carousel
 .carousel-item {
     color: rgba(200, 0, 0, .8);
 }
+
+/* blinking cursor */
+.cursor {
+  background: black;
+  line-height: 17px;
+  margin-left: 3px;
+  -webkit-animation: blink 0.8s infinite;
+  width: 7px;
+  height: 15px;
+}
+
+@-webkit-keyframes blink {
+  0% {background: white}
+  50% {background: black}
+  100% {background: white}
+}
