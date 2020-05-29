@@ -1585,3 +1585,144 @@ options: {
 
 });
 
+
+
+/* 
+------------------------------ resolved-country ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/resolve/sk-resolved-country.json", function(result) {
+var data = result;
+var resolved_country = { "date":{}, "SK":{},"FR":{},"NL":{},"DE":{},"US":{},"HU":{},"NX":{},"CZ":{},"GB":{},"PL":{}};
+
+for (var port in resolved_country) {
+    resolved_country[port] = result['resolved_by_country'].map(function(e) {
+        return e[port];
+        }); 
+}
+
+stats(resolved_country); // populate actual stats
+
+var ctx_resolved_country = document.getElementById("resolved-countryChart");
+var resolved_countryChart = new Chart(ctx_resolved_country, {
+type: 'line',
+data: {
+    labels: resolved_country.date,
+    datasets: [{
+        label: 'SK',
+        data: resolved_country["SK"],
+        borderColor: 'rgba(80, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'CZ',
+        data: resolved_country["CZ"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'FR',
+        data: resolved_country["FR"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'NL',
+        data: resolved_country["NL"],
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
+        fill: false,
+    },
+    {
+        label: 'DE',
+        data: resolved_country["DE"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'US',
+        data: resolved_country["US"],
+        borderColor: 'rgba(0, 0, 0, 1.0)', 
+        fill: false,
+    },
+    {
+        label: 'HU',
+        data: resolved_country["HU"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'GB',
+        data: resolved_country["GB"],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: false,
+    },
+    {
+        label: 'PL',
+        data: resolved_country["PL"],
+        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        fill: false,
+    },
+    {
+        label: 'žiadna',
+        data: resolved_country["NX"],
+        borderColor: 'rgba(190, 70, 20, 0.1)', 
+        fill: false,
+    },
+    ]
+},
+options: {
+    animation: {
+        duration: 0 // general animation time
+    },
+    hover: {
+        animationDuration: 0 // duration of animations when hovering an item
+    },
+    responsiveAnimationDuration: 0, // animation duration after a resize
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 500, //minimum tick
+                max: 12000, //maximum tick
+                callback: function (value, index, values) {
+                    return Number(value.toString());//pass tick values as a string into Number function
+                }
+           },
+           afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+               chartObj.ticks = [];
+               chartObj.ticks.push(0.1);
+               chartObj.ticks.push(1);
+               chartObj.ticks.push(10);
+               chartObj.ticks.push(100);
+               chartObj.ticks.push(1000);
+               chartObj.ticks.push(10000);
+               chartObj.ticks.push(100000);               
+           },
+            type: 'logarithmic'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    },
+    aspectRatio: 3,
+}
+});
+
+
+});
+
