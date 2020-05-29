@@ -29,7 +29,7 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
  "Y88888P"   "Y8888P" 8888888 888    Y888     888  Y8P 88888P' 888  888 
                                                                             
   -->
-
+<!--
     <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="https://osint.sk">
@@ -44,13 +44,13 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
         <a class="py-2 d-none d-md-inline-block" href="#project">O Projekte</a>
       </div>
     </nav>
-
+-->
     <!-- Headline -->
     <section class="headline">
       <div class="position-relative overflow-hidden p-3 text-center container-fluid">
-          <div id="particles-js"></div>
+          <!-- <div id="particles-js"></div> -->
         <div class="col-md-5 p-lg-5 mx-auto my-5" id="osint-title">
-          <h1 class="display-4 font-weight-normal osint">Open-source intelligence (OSINT) .SK</h1>
+          <h1 class="display-4 font-weight-normal osint">open-source intelligence<span class="cursor">&nbsp;</span></h1>
           <p class="lead font-weight-normal">Všetky aktuálne údaje o slovenskom internete ktoré môžete potrebovať, na jednom mieste.</p>
         </div>
       </div>
@@ -511,6 +511,125 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
   </section>
   <!-- domains-count-by-holder END -->
+
+
+
+
+    <!-- resolved-ip BEGIN -->
+    <section id="resolved-ip">
+
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="section-heading text-uppercase">Počet domén na IP adresu (Top10)</h1>
+          <h3 class="section-subheading text-muted">Denné štatistiky o počte domén podľa IP adresy</h3>
+        </div>
+      </div>
+
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+      <canvas id="resolved-ipChart"></canvas>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad počtu domén prislúchajúcich k danej IP adrese. Je aktualizovaná týdenne na základe aktuálnych dát zverejňovaným správcom domény, spoločnosťou <a class="text-muted" href="https://sk-nic.sk/" target="_blank">SK-NIC</a> a aktuálnemu stavu DNS záznamov.</h3>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.15<span class="badge badge-primary badge-pill" id="37-9-175-15">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.17<span class="badge badge-primary badge-pill" id="37-9-175-17">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.18<span class="badge badge-primary badge-pill" id="37-9-175-18">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.21<span class="badge badge-primary badge-pill" id="37-9-175-21">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.23<span class="badge badge-primary badge-pill" id="37-9-175-23">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.25<span class="badge badge-primary badge-pill" id="37-9-175-25">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">37.9.175.26<span class="badge badge-primary badge-pill" id="37-9-175-26">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">81.2.194.128<span class="badge badge-primary badge-pill" id="81-2-194-128">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">81.95.96.29<span class="badge badge-primary badge-pill" id="81-95-96-29">0</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">93.184.77.58<span class="badge badge-primary badge-pill" id="93-184-77-58">0</span></li>
+       </ul>
+        </div>
+      
+    </div>
+
+
+  <div class="container mt-5 mb-5">
+      <a href="#resolved-ip-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Zobraziť sady dát</a>
+  </div>
+
+  <div class="container mt-5 mb-5 panel-collapse collapse" id="resolved-ip-dataset-show">
+    <div class="row text-center">
+
+      <div class="col-md-6">
+        <h3 class="stats-heading">actual-sk-www-domains-resolved</h3>
+        <p class="text-muted">Týždenná štatistika domén na IP adresu.</p>
+        <pre class="text-left">
+{
+  "CZ": {
+      "77.78.104.3": [
+          "www.007shop.sk"
+      ],
+      "81.95.96.126": [
+          "www.001bratislava-reality.sk"
+      ]
+  },
+  "DE": {
+      "46.4.113.74": [
+          "www.0000.sk",
+          "www.008.sk"
+      ]
+  },  
+}
+          </pre>
+      </div>
+
+      <div class="col-md-6">
+          <h4 class="stats-heading">trends-sk-resolved-ip</h4>
+          <p class="text-muted">Celkový trend zmien počtu domén na IP adresu (Top10).</p>
+          <pre class="text-left">
+{
+  "resolved_by_ip": [
+      {
+          "37.9.175.21": 15999, 
+          "37.9.175.23": 4346, 
+          "37.9.175.25": 4320, 
+          "81.95.96.29": 11113, 
+          "37.9.175.26": 4055, 
+          "37.9.175.15": 4905, 
+          "37.9.175.17": 4098, 
+          "81.2.194.128": 7305, 
+          "93.184.77.58": 6051, 
+          "date": "2020-04-24", 
+          "37.9.175.18": 4148
+      },   
+  ]
+} 
+            </pre>
+        </div>
+
+    </div>
+    <div class="row text-center">
+        <div class="col-md-6">
+            <a href="https://github.com/redlab-sk/osint-sk-data/raw/master/actual/resolve/sk-www-domains-resolved.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+        </div>
+        <div class="col-md-6">
+            <a href="https://github.com/redlab-sk/osint-sk-data/raw/master/trends/resolve/sk-resolved-ip.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+        </div>
+    </div>
+  </div>
+
+  </section>
+  <!-- resolved-ip END -->
+
+
+
+
+
+
+
+
+
+
 
 
       <hr />    
@@ -1527,8 +1646,8 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
   <script src="https://npmcdn.com/Chart.Zoom.js@0.3.0/Chart.Zoom.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-  <script src="js/particles.js"></script>
-  <script src="js/particles-config.js"></script>
+  <!-- <script src="js/particles.js"></script>
+  <script src="js/particles-config.js"></script> -->
   <script src="js/osint-charts.js"></script>
 
 </body>
