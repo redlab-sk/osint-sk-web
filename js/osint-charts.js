@@ -1464,7 +1464,7 @@ options: {
 
 $.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/resolve/sk-resolved-ip.json", function(result) {
 var data = result;
-var resolved_ip = { "date":{}, "37.9.175.15":{}, "37.9.175.17":{}, "37.9.175.18":{}, "37.9.175.21":{}, "37.9.175.23":{}, "37.9.175.25":{}, "37.9.175.26":{}, "81.2.194.128":{}, "81.95.96.29":{}, "93.184.77.58":{}};
+var resolved_ip = { "date":{}, "37.9.175.15":{}, "37.9.175.17":{}, "37.9.175.18":{}, "37.9.175.21":{}, "37.9.175.23":{}, "37.9.175.25":{}, "37.9.175.26":{}, "81.2.194.128":{}, "81.95.96.29":{}, "93.184.77.58":{},"37.9.175.11":{},};
 
 for (var port in resolved_ip) {
     resolved_ip[port] = result['resolved_by_ip'].map(function(e) {
@@ -1482,19 +1482,19 @@ data: {
     datasets: [{
         label: '37.9.175.15',
         data: resolved_ip["37.9.175.15"],
-        borderColor: 'rgba(80, 0, 0, 0.8)', 
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
         fill: false,
     },
     {
         label: '37.9.175.17',
         data: resolved_ip["37.9.175.17"],
-        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
         fill: false,
     },
     {
         label: '37.9.175.18',
         data: resolved_ip["37.9.175.18"],
-        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
         fill: false,
     },
     {
@@ -1506,37 +1506,43 @@ data: {
     {
         label: '37.9.175.23',
         data: resolved_ip["37.9.175.23"],
-        borderColor: 'rgba(0, 0, 0, 1)', 
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
         fill: false,
     },
     {
         label: 'I37.9.175.25',
         data: resolved_ip["37.9.175.25"],
-        borderColor: 'rgba(0, 0, 0, 0.2)', 
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
         fill: false,
     },
     {
         label: '37.9.175.26',
         data: resolved_ip["37.9.175.26"],
-        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
         fill: false,
     },
     {
+        label: '37.9.175.11',
+        data: resolved_ip["37.9.175.26"],
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
+        fill: false,
+    },    
+    {
         label: '81.2.194.128',
         data: resolved_ip["81.2.194.128"],
-        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        borderColor: 'rgba(0, 0, 0, 0.4)', 
         fill: false,
     },
     {
         label: '81.95.96.29',
         data: resolved_ip["81.95.96.29"],
-        borderColor: 'rgba(190, 70, 30, 0.2)', 
+        borderColor: 'rgba(120, 70, 30, 0.7)', 
         fill: false,
     },
     {
         label: '93.184.77.58',
         data: resolved_ip["93.184.77.58"],
-        borderColor: 'rgba(190, 70, 20, 0.1)', 
+        borderColor: 'rgba(190, 70, 20, 0.7)', 
         fill: false,
     },
     ]
