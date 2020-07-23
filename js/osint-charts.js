@@ -342,7 +342,7 @@ options: {
         yAxes: [{
             ticks: {
                 min: 1000, //minimum tick
-                max: 60000, //maximum tick
+                max: 80000, //maximum tick
                 callback: function (value, index, values) {
                     return Number(value.toString());//pass tick values as a string into Number function
                 }
@@ -805,7 +805,7 @@ options: {
         yAxes: [{
             ticks: {
                 min: 1000, //minimum tick
-                max: 180000, //maximum tick
+                max: 220000, //maximum tick
                 callback: function (value, index, values) {
                     return Number(value.toString());//pass tick values as a string into Number function
                 }
@@ -1701,7 +1701,7 @@ options: {
         yAxes: [{
             ticks: {
                 min: 500, //minimum tick
-                max: 12000, //maximum tick
+                max: 14000, //maximum tick
                 callback: function (value, index, values) {
                     return Number(value.toString());//pass tick values as a string into Number function
                 }
