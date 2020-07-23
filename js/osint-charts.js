@@ -1129,7 +1129,7 @@ options: {
 
 $.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-count-by-registrar.json", function(result) {
 var data = result;
-var domains_count_by_registrar = { "date":{},"Webglobe - Yegon, s. r. o.":{},"ZONER s.r.o.":{},"INTERNET SK, s.r.o.":{},"Websupport, s.r.o.":{},"WebHouse, s.r.o.":{},"IGNUM s.r.o.":{},"WEDOS Internet, a.s.":{},"ACTIVE 24, s.r.o.":{},"Gransy s.r.o.":{},"EXO TECHNOLOGIES spol. s r.o.":{}};
+var domains_count_by_registrar = { "date":{},"Webglobe - Yegon, s. r. o.":{},"ZONER s.r.o.":{},"INTERNET SK, s.r.o.":{},"INTERNET CZ, a.s.":{},"Websupport, s.r.o.":{},"WebHouse, s.r.o.":{},"IGNUM s.r.o.":{},"WEDOS Internet, a.s.":{},"ACTIVE 24, s.r.o.":{},"Gransy s.r.o.":{},"EXO TECHNOLOGIES spol. s r.o.":{}};
 
 for (var port in domains_count_by_registrar) {
     domains_count_by_registrar[port] = result['domains-count-by-registrar'].map(function(e) {
@@ -1159,6 +1159,12 @@ data: {
     {
         label: 'INTERNET SK, s.r.o.',
         data: domains_count_by_registrar["INTERNET SK, s.r.o."],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'INTERNET CZ, a.s.',
+        data: domains_count_by_registrar["INTERNET CZ, a.s."],
         borderColor: 'rgba(150, 0, 0, 0.8)', 
         fill: false,
     },
