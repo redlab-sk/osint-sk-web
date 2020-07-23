@@ -1285,7 +1285,7 @@ options: {
 
 $.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/domain/trends-count-by-holder.json", function(result) {
 var data = result;
-var domains_count_by_holder = { "date":{},"WY-98059": {},"ASC0007": {}, "MEDI-0096-581": {}, "H637573": {}, "WEST-SK": {}, "SWAN-0004": {}, "LLAR-0001": {}, "PTS1196641": {}, "sub_712895": {}, "NIC-HOSTING": {},"CSK-WHOISP": {},"H635897": {},"BLUE-0058":{},"sub_1140449":{}};
+var domains_count_by_holder = { "date":{},"WY-98059": {},"ASC0007": {}, "MEDI-0096-581": {}, "H637573": {}, "WEST-SK": {}, "SWAN-0004": {}, "LLAR-0001": {}, "PTS1196641": {}, "sub_712895": {}, "NIC-HOSTING": {},"CSK-WHOISP": {},"H635897": {},"BLUE-0058":{},"sub_1140449":{},"ESAT-0004":{}};
 
 for (var port in domains_count_by_holder) {
     domains_count_by_holder[port] = result['domains-count-by-holder'].map(function(e) {
@@ -1384,6 +1384,12 @@ data: {
         borderColor: 'rgba(110, 70, 20, 0.1)', 
         fill: false,
     },
+    {
+        label: 'ESAT-0004',
+        data: domains_count_by_holder["ESAT-0004"],
+        borderColor: 'rgba(110, 70, 20, 0.1)', 
+        fill: false,
+    },    
     ]
 },
 options: {
