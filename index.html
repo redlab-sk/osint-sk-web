@@ -633,8 +633,8 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h1 class="section-heading text-uppercase">Počet domén na krajinu - geoip (Top10)</h1>
-          <h3 class="section-subheading text-muted">Týženné štatistiky o počte domén na krajinu podľa IP adresy</h3>
+          <h1 class="section-heading text-uppercase">Počet hostingových IP na krajinu - geoip (Top10)</h1>
+          <h3 class="section-subheading text-muted">Týženné štatistiky o počte hostingových IP adries na krajinu podľa IP adresy</h3>
         </div>
       </div>
 
@@ -644,7 +644,7 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad počtu domén prislúchajúcich k danej krajine podľa geoip. Je aktualizovaná týdenne na základe aktuálnych dát zverejňovaným správcom domény, spoločnosťou <a class="text-muted" href="https://sk-nic.sk/" target="_blank">SK-NIC</a> a aktuálnemu stavu DNS záznamov.</h3>
+        <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad počtu unikátnych IP adries prevádzkujúcich slovenské domény prislúchajúcich k danej krajine podľa geoip. Je aktualizovaná týdenne na základe aktuálnych dát zverejňovaným správcom domény, spoločnosťou <a class="text-muted" href="https://sk-nic.sk/" target="_blank">SK-NIC</a> a aktuálnemu stavu DNS záznamov.</h3>
       </div>
     </div>
     <div class="row text-center">
@@ -698,7 +698,7 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
       <div class="col-md-6">
           <h4 class="stats-heading">trends-sk-resolved-country</h4>
-          <p class="text-muted">Celkový trend zmien počtu domén na krajinu podľa geoip (Top10).</p>
+          <p class="text-muted">Celkový trend zmien počtu hostingových IP na krajinu podľa geoip (Top10).</p>
           <pre class="text-left">
 {
   "resolved_by_country": [
@@ -736,10 +736,114 @@ Y88b. .d88P Y88b  d88P  888   888   Y8888     888  d8b     X88 888 "88b
 
 
 
+    <!-- resolved-combined BEGIN -->
+    <!--
+    <section id="resolved-combined">
 
-
-
-
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h1 class="section-heading text-uppercase">Počet domén na krajinu - geoip (Top10)</h1>
+            <h3 class="section-subheading text-muted">Týženné štatistiky o počte domén na krajinu podľa IP adresy</h3>
+          </div>
+        </div>
+  
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 myChartDiv">
+        <canvas id="resolved-combinedChart"></canvas>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h3 class="section-subheading text-muted">Štatistika predstavuje prehľad počtu domén prislúchajúcich k danej krajine podľa geoip. Je aktualizovaná týdenne na základe aktuálnych dát zverejňovaným správcom domény, spoločnosťou <a class="text-muted" href="https://sk-nic.sk/" target="_blank">SK-NIC</a> a aktuálnemu stavu DNS záznamov.</h3>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">SK<span class="badge badge-primary badge-pill" id="SK">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">FR<span class="badge badge-primary badge-pill" id="FR">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">NL<span class="badge badge-primary badge-pill" id="NL">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">DE<span class="badge badge-primary badge-pill" id="DE">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">US<span class="badge badge-primary badge-pill" id="US">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">HU<span class="badge badge-primary badge-pill" id="HU">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">žiadna<span class="badge badge-primary badge-pill" id="NX">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">CZ<span class="badge badge-primary badge-pill" id="CZ">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">GB<span class="badge badge-primary badge-pill" id="GB">0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">PL<span class="badge badge-primary badge-pill" id="PL">0</span></li>
+         </ul>
+          </div>
+        
+      </div>
+  
+  
+    <div class="container mt-5 mb-5">
+        <a href="#resolved-combined-dataset-show" class="btn btn-outline-danger col-md-12" data-toggle="collapse">Zobraziť sady dát</a>
+    </div>
+  
+    <div class="container mt-5 mb-5 panel-collapse collapse" id="resolved-combined-dataset-show">
+      <div class="row text-center">
+  
+        <div class="col-md-6">
+          <h3 class="stats-heading">actual-sk-www-domains-resolved</h3>
+          <p class="text-muted">Týždenná štatistika domén na krajinu podľa geoip.</p>
+          <pre class="text-left">
+  {
+    "CZ": {
+        "77.78.104.3": [
+            "www.007shop.sk"
+        ],
+        "81.95.96.126": [
+            "www.001bratislava-reality.sk"
+        ]
+    },
+    "DE": {
+        "46.4.113.74": [
+            "www.0000.sk",
+            "www.008.sk"
+        ]
+    },  
+  }
+            </pre>
+        </div>
+  
+        <div class="col-md-6">
+            <h4 class="stats-heading">trends-sk-resolved-combined</h4>
+            <p class="text-muted">Celkový trend zmien počtu domén na krajinu podľa geoip (Top10).</p>
+            <pre class="text-left">
+  {
+    "resolved_by_combined": [
+        {
+            "NX": 5019, 
+            "FR": 3574, 
+            "NL": 3033, 
+            "DE": 16281, 
+            "US": 19892, 
+            "HU": 1780, 
+            "SK": 225532, 
+            "CZ": 91735, 
+            "GB": 1655, 
+            "date": "2020-07-24", 
+            "AT": 1450
+        },
+    ]
+}
+              </pre>
+          </div>
+  
+      </div>
+      <div class="row text-center">
+          <div class="col-md-6">
+              <a href="https://github.com/redlab-sk/osint-sk-data/raw/master/actual/resolve/sk-www-domains-resolved.json" class="btn btn-outline-danger col-md-12" target="_blank">Stiahnuť</a>
+          </div>
+          <div class="col-md-6">
+              <a href="https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/resolve/sk-resolved-combined.json" class="btn btn-outline-danger col-md-12" target="_blank" >Stiahnuť</a>
+          </div>
+      </div>
+    </div>
+  
+    </section>
+    -->
+    <!-- resolved-combined END -->
+  
 
 
       <hr />    
