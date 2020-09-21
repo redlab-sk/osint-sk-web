@@ -11,12 +11,19 @@
  88888P'  "Y888 "Y888888  "Y888  88888P' 
 */
 
-// Populate actual stats and carousel from las entry in trends
+// Populate actual stats and carousel from last entry in trends
 function stats(data) {
     $.each(data, function( k, v ) {
         var kr=k.replace(/ /g, '-').replace(/\./g, '-').replace(/,/g, '-');
         $("#"+kr).text(v[v.length - 1]);
         $("#carousel-"+kr).text(v[v.length - 1]);
+        });
+}
+
+// Populate actual stats in resolved-country with last entry in trends
+function stats_by_country(data) {
+    $.each(data, function( k, v ) {
+        $("#country-"+k).text(v[v.length - 1]);
         });
 }
 
@@ -1883,6 +1890,146 @@ options: {
                chartObj.ticks.push(1000);
                chartObj.ticks.push(10000);
                chartObj.ticks.push(100000);               
+           },
+            type: 'logarithmic'
+        }]
+    },
+    // Container for pan options
+    pan: {
+        // Boolean to enable panning
+        enabled: true,
+        // Panning directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow panning in the y direction
+        mode: 'x',
+        speed: 1
+    },
+
+    // Container for zoom options
+    zoom: {
+        // Boolean to enable zooming
+        enabled: true,						
+        // Zooming directions. Remove the appropriate direction to disable 
+        // Eg. 'y' would only allow zooming in the y direction
+        mode: 'x',
+    },
+    aspectRatio: 3,
+}
+});
+
+
+});
+
+/* 
+------------------------------ resolved-combined ------------------------------
+*/
+
+
+$.getJSON("https://raw.githubusercontent.com/redlab-sk/osint-sk-data/master/trends/resolve/sk-resolved-combined.json", function(result) {
+var data = result;
+var resolved_combined = { "date":{}, "SK":{},"FR":{},"NL":{},"DE":{},"US":{},"HU":{},"NX":{},"CZ":{},"GB":{},"AT":{}};
+
+for (var port in resolved_combined) {
+    resolved_combined[port] = result['resolved_by_combined'].map(function(e) {
+        return e[port];
+        }); 
+}
+
+stats_by_country(resolved_combined); // populate actuasl stats
+
+var ctx_resolved_combined = document.getElementById("resolved-combinedChart");
+var resolved_combinedChart = new Chart(ctx_resolved_combined, {
+type: 'line',
+data: {
+    labels: resolved_combined.date,
+    datasets: [{
+        label: 'SK',
+        data: resolved_combined["SK"],
+        borderColor: 'rgba(220, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'CZ',
+        data: resolved_combined["CZ"],
+        borderColor: 'rgba(100, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'FR',
+        data: resolved_combined["FR"],
+        borderColor: 'rgba(150, 0, 0, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'NL',
+        data: resolved_combined["NL"],
+        borderColor: 'rgba(200, 0, 0, 0.9)', 
+        fill: false,
+    },
+    {
+        label: 'DE',
+        data: resolved_combined["DE"],
+        borderColor: 'rgba(0, 0, 0, 1)', 
+        fill: false,
+    },
+    {
+        label: 'US',
+        data: resolved_combined["US"],
+        borderColor: 'rgba(0, 0, 0, 1.0)', 
+        fill: false,
+    },
+    {
+        label: 'HU',
+        data: resolved_combined["HU"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'GB',
+        data: resolved_combined["GB"],
+        borderColor: 'rgba(190, 70, 30, 0.4)', 
+        fill: false,
+    },
+    {
+        label: 'AT',
+        data: resolved_combined["AT"],
+        borderColor: 'rgba(190, 70, 30, 0.8)', 
+        fill: false,
+    },
+    {
+        label: 'žiadna',
+        data: resolved_combined["NX"],
+        borderColor: 'rgba(190, 70, 20, 0.1)', 
+        fill: false,
+    },
+    ]
+},
+options: {
+    animation: {
+        duration: 0 // general animation time
+    },
+    hover: {
+        animationDuration: 0 // duration of animations when hovering an item
+    },
+    responsiveAnimationDuration: 0, // animation duration after a resize
+    scales: {
+        yAxes: [{
+            ticks: {
+                min: 1000, //minimum tick
+                max: 300000, //maximum tick
+                callback: function (value, index, values) {
+                    return Number(value.toString());//pass tick values as a string into Number function
+                }
+           },
+           afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+               chartObj.ticks = [];
+               chartObj.ticks.push(0.1);
+               chartObj.ticks.push(1);
+               chartObj.ticks.push(10);
+               chartObj.ticks.push(100);
+               chartObj.ticks.push(1000);
+               chartObj.ticks.push(10000);
+               chartObj.ticks.push(100000);
+               chartObj.ticks.push(1000000);               
            },
             type: 'logarithmic'
         }]
